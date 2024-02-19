@@ -1,0 +1,81 @@
+<html>
+<head>
+<title>テーブル状況</title>
+<meta charset="UTF-8">
+</head>
+<body>
+<canvas id="sample" width="800" height="500">
+
+</canvas>
+  <script>
+      const websocket = new WebSocket("ws://localhost:8765/"); 
+      let message = null;
+      cnt = 0;
+      websocket.onmessage = function recvmessage(recv_data){
+          message = recv_data.data;		              //メッセージを受け取ってmessageに格納
+          console.log(message);
+          
+          var canvas = document.getElementById('sample');
+          var ctx =canvas.getContext('2d');
+          
+          ctx.fillStyle = "black";
+          ctx.font ="32px serif";
+          ctx.fillText("テーブル1",50,80);
+          ctx.fillText("椅子1",230,80);
+ 
+          
+          ctx.fillText("空:",5,325);
+          ctx.fillText("満:",100,325);
+
+          ctx.fillStyle = "green";
+          ctx.fillRect(50 ,305 ,30,24);
+
+          
+          ctx.fillStyle = "red";
+          ctx.fillRect(150,305,30,24);
+
+          // カメラ V3
+          if (canvas.getContext && message == 1){ //テーブルの上に物あり
+              ctx.fillStyle = "red";
+              ctx.fillRect(75,95,75,60);
+              //cnt = cnt + 1;
+              
+          }
+          else if (canvas.getContext && message == 0){ //テーブルの上に物なし
+              ctx.fillStyle = "green";
+              ctx.fillRect(75,95,75,60);
+              cnt = cnt + 1;
+          }
+	  //人感センサ１
+          else if (canvas.getContext && message == 2){//人 検知
+              ctx.fillStyle = "red";
+              ctx.fillRect(230,95,75,60);
+              
+          }
+          else if (canvas.getContext && message == 3){//人 検知なし
+              ctx.fillStyle = "green";
+              ctx.fillRect(230,95,75,60);
+              cnt = cnt + 1;
+
+          }
+          
+
+          
+          if(cnt >= 10){  //console内のデータをクリアする。
+            console.clear();
+            cnt = 0;
+          }
+
+
+     
+      }
+      
+  </script>
+  <style type="text/css">
+    #sample {
+        background: #fff;
+    }
+  </style>
+</body>
+</html>
+

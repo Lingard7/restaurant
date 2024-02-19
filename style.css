@@ -1,0 +1,146 @@
+@charset "UTF-8";
+
+/* タイトル */
+
+h1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #333333;
+    font-size: 400%;
+}
+
+/* タイトルの線飾り　*/
+h1::before,
+h1::after {
+    width: 3px;
+    height: 40px;
+    background-color: #2589d0;
+    content: '';
+}
+
+/* タイトル左側の線のスタイル　*/
+h1::before {
+    transform: rotate(-35deg);
+    margin-right: 30px;
+}
+
+/* タイトル右側の線のスタイル */
+h1::after {
+    transform: rotate(35deg);
+    margin-left: 30px;
+}
+
+/* エラーメッセージのスタイル */
+.error-message {
+    display: inline-block;
+    font-size: 18px !important;
+    color: #da3c41;
+    margin-top: 10px;
+}
+
+/* テキストボックスのスタイル */
+.cp_iptxt {
+	position: relative;
+	width: 10%;
+	margin: 40px auto;
+    text-align: center;
+    
+}
+
+/* テキストボックス内のテキスト入力フィールドのスタイル */
+.cp_iptxt input[type='text'] {
+	font: 18px/24px sans-serif;
+	box-sizing: border-box;
+	width: 100%;
+	padding: 0.3em;
+	transition: 0.3s;
+	letter-spacing: 1px;
+	color: #aaaaaa;
+	border: none;
+	border-bottom: 2px solid #1b2538;
+	background: transparent;
+}
+
+/* フォーカス時のテキストボックスのスタイル */
+.ef input[type='text']:focus {
+	border-bottom: 2px solid #da3c41;
+	outline: none;
+}
+
+/* ボタンのスタイル */
+*,
+*:before,
+*:after {
+  -webkit-box-sizing: inherit;
+  box-sizing: inherit;
+}
+
+html {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  font-size: 62.5%;
+}
+
+/* 共通のボタンスタイル */
+.btn,
+a.btn,
+button.btn {
+    font-size: 1.8rem;
+    font-weight: 700;
+    line-height: 1.5;
+    position: relative;
+    padding: 1.5rem 7rem;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-transition: all 0.3s;
+    transition: all 0.3s;
+    text-align: center;
+    vertical-align: middle;
+    text-decoration: none;
+    letter-spacing: 0.1em;
+    color: #212529;
+    border-radius: 0.5rem;
+    margin: 0 auto;
+}
+
+/* ボーダー付きのボタンスタイル */
+.btn-border input[type="submit"],
+.btn-border input[type="reset"] {
+    font-size: 20px;
+    border: 2px solid #000;
+    border-radius: 0;
+    background: #fff;
+    width: 10%;
+}
+
+/* ボーダー付きボタンホバー時のスタイル */
+.btn-border input[type="submit"]:hover,
+.btn-border input[type="reset"]:hover {
+    color: #fff;
+    background: #000;
+}
+
+/* 待ちリストのスタイル */
+.wait_state {
+    font-size: 20px;
+    text-align: center;
+}
+
+/* テーブルのスタイル */
+table {
+    border-collapse:  collapse;
+}
+
+/* テーブルのヘッダとセルのスタイル */
+th,td {
+    padding: 5px 20px;
+}
+
+/* テーブルの奇数行の背景色 */
+tr:nth-child(odd) {
+    background-color:  #ddd;
+}
